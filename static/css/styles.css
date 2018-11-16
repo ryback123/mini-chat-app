@@ -1,0 +1,10 @@
+.msg-form{
+  width: 50%;
+  margin: 0 auto;
+}
+.label-text{
+  font-weight: bold;
+}
+textarea{
+  resize: none;
+}
