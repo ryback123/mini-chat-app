@@ -2,7 +2,11 @@ from flask import Flask, jsonify, request
 import sqlite3
 app = Flask(__name__)
 
-@app.route("/", methods=['POST', 'GET'])
+@app.route("/")
+def renderPage():
+    return render_template("index.html")
+
+@app.route("/message", methods=['POST', 'GET'])
 def updateMessage():
     con = sqlite3.connect("msgs.sqlite")
     cur = con.cursor()
