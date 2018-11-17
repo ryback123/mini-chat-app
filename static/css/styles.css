@@ -1,4 +1,4 @@
-.msg-form{
+.msg-input{
   width: 50%;
   margin: 0 auto;
 }
@@ -7,4 +7,26 @@
 }
 textarea{
   resize: none;
+}
+.btn-img:before{
+    content: "";
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    margin-right: 5px;
+    vertical-align: text-top;
+    background-color: transparent;
+    background-position : center center;
+    background-repeat:no-repeat;
+    background-image : url(https://i.imgur.com/G4ASM7t.png);
+}
+.box {
+  transition: box-shadow .3s;
+  margin-left: 5px;
+  background: #FFFFFF;
+  border: 0.05px solid #ccc;
+  float: left;
+}
+.box:hover {
+  box-shadow: 0 0 11px rgba(0,0,256,.2)!important;
 }
