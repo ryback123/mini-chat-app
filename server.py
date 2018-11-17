@@ -3,7 +3,7 @@ from flask_cors import CORS
 import sqlite3
 
 app = Flask(__name__)
-cors = CORS(app, resources={r"/*": {"origin": "http://localhost:5000/", "supports_credentials": "true"}})
+cors = CORS(app, resources={r"/*": {"origin": "http://localhost:5000/", "supports_credentials": "true"}}) #Add address of client
 
 @app.route("/")
 def renderPage():
