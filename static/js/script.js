@@ -33,7 +33,7 @@ function sendMessage()
   else {
     var req = JSON.parse('{"user":"'+profile.Eea+'", "msg":"'+msg+'"}');
     console.log(req);
-    fetch('http://127.0.0.1:5000/message', {
+    fetch('http://127.0.0.1:5000/message', { //Add address of api host
       method: 'POST',
       body: JSON.stringify(req),
       headers:{
