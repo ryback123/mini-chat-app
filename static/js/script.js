@@ -6,9 +6,9 @@ var id=0;
 $(document).ready(function () {
   window.setInterval(function () {
     console.log("ran message");
-    var env = "http://localhost:8000/";
+    var env = "http://localhost:8000/message";
     $.ajax(env, {
-      URL: env+"message",
+      URL: env,
       type: "GET",
       contentType: "application/json; charset=utf-8",
       dataType: "json",
@@ -20,8 +20,9 @@ $(document).ready(function () {
       }
     });
     console.log("ran online");
+    env = "http://localhost:8000/user/add";
     $.ajax(env, {
-      URL: env+"user/add",
+      URL: env+"env",
       type: "GET",
       contentType: "application/json; charset=utf-8",
       dataType: "json",
@@ -32,7 +33,7 @@ $(document).ready(function () {
         console.log("failed");
       }
     });
-  }, 10000);
+  }, 1000);
 });
 
 function onSignIn(googleUser)
