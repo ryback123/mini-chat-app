@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mini Chat App</title>
+  <meta name="google-signin-client_id" content="342254156152-ding59uag5adnlspc1lagpg3vgd7ghnn.apps.googleusercontent.com">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+  <meta http-equiv="Pragma" content="no-cache"/>
+  <meta http-equiv="Expires" content="0"/>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}">
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript" src="static/js/script.js"></script>
+</head>
+<body>
+  <header id="header" style="display: none;">
+    <h1 class="text-center">Mini Chat App</h1>
+    <br><br>
+  </header>
+
+  <section id="loginpage" class="login-section">
+    <div class="container">
+      <div class="card card-container">
+        <!-- <h2>Login with Google</h2> -->
+        <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
+        <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+        <p id="profile-name" class="profile-name-card"></p>
+        <div class="g-signin2" data-onsuccess="onSignIn"></div>
+      </div><!-- /card-container -->
+    </div><!-- /container -->
+  </section>
+
+  <section id="chatwindow" style="display: none;">
+    <div class="contain" style="border-bottom: #CED4DA;">
+      <div class="heading">
+        Group Chat
+      </div>
+      <div id="msg-update" class="msg-updt"></div>
+      <div class="input-group mb-3">
+        <input id="msg" type="text" class="form-control input-lg" placeholder="Enter message">
+        <div class="input-group-append">
+          <button id="send" type="submit" class="btn btn-primary" onClick="sendMessage()" name="Send">Send</button>
+        </div>
+      </div>
+    </div>
+    <div class="contain" style="width: 300px;">
+      <div class="heading">
+        Online Users
+      </div>
+      <div id="usr-update" class="usr-updt"></div>
+    </div>
+  </section>
+</body>
+</html>
