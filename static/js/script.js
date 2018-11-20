@@ -125,6 +125,8 @@ function drawDivsforMsg(msgs)
     msgElement.appendChild(div);
   }
 }
+
+//In Online users list, the padding happens twice causing two spaces in paddingBottom
 function drawDivsforUser(users)
 {
   const userElement = document.getElementById("usr-update");
