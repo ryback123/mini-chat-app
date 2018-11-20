@@ -29,8 +29,13 @@ def addOnlineUsers():
     cur = con.cursor()
     if request.method =="POST":
         req = request.get_json()
-        cur.execute("INSERT INTO users(USER, ID) VALUES (?, ?)", (req["user"],req["id"]))
-        con.commit()
+        i=0
+        cur.execute("SELECT USER, ID FROM users WHERE ID=(?)", (req["id"],))
+        for row in cur:
+            i+=1
+        if i==0:
+            cur.execute("INSERT INTO users(USER, ID) VALUES (?, ?)", (req["user"],req["id"]))
+            con.commit()
     cur.execute("SELECT USER, ID FROM users")
     users_list = list()
     for row in cur:
@@ -41,7 +46,7 @@ def addOnlineUsers():
 def removeOnlineUsers():
     con = sqlite3.connect("users.sqlite")
     cur = con.cursor()
-    cur.execute("DELETE FROM users WHERE ID=(?)", (req["id"]))
+    cur.execute("DELETE FROM users WHERE ID=(?)", (req["id"],))
     con.commit()
 
 if __name__ == "__main__":
