@@ -125,8 +125,24 @@ function drawDivsforMsg(msgs)
     msgElement.appendChild(div);
   }
 }
-drawDivsforUser(users)
+function drawDivsforUser(users)
 {
-  const msgElement = document.getElementById("usr-update");
+  const userElement = document.getElementById("usr-update");
+  while (userElement.firstChild) {
+    userElement.removeChild(userElement.firstChild);
+  }
   console.log(users.user_list);
+  for (var i=0; i < users.user_list.length; i++) {
+    const name = document.createElement('p');
+    name.textContent = users.user_list[i].user;
+    name.style.marginLeft = '10px';
+    name.style.marginRight = '10px';
+    name.style.paddingTop = '5px';
+    name.style.paddingBottom = '5px';
+    name.style.borderBottom = '1px solid #DCDCDC';
+    if(users.user_list[i].id!=profile.Eea)
+    {
+      userElement.appendChild(name);
+    }
+  }
 }
