@@ -44,10 +44,13 @@ def addOnlineUsers():
 
 @app.route("/user/remove", methods=['POST'])
 def removeOnlineUsers():
+    req = request.get_json()
     con = sqlite3.connect("users.sqlite")
     cur = con.cursor()
     cur.execute("DELETE FROM users WHERE ID=(?)", (req["id"],))
     con.commit()
+    return jsonify({"status":"deleted"})
+
 
 if __name__ == "__main__":
     app.run(debug=True, port=8000)
