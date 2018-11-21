@@ -46,6 +46,22 @@ function onSignIn(googleUser)
   console.log('Name: ' + profile.getName());
   console.log('Image URL: ' + profile.getImageUrl());
   console.log('Email: ' + profile.getEmail());
+  const pagetop = document.getElementById("username");
+  while (pagetop.firstChild) {
+    pagetop.removeChild(pagetop.firstChild);
+  }
+  const img = document.createElement('img')
+  img.src = profile.getImageUrl();
+  img.alt = "User Profile Photo";
+  img.className = 'user-img';
+  const name = document.createElement('p');
+  name.textContent = profile.getName();
+  name.style.paddingLeft = "10px";
+  name.style.paddingTop = "4px";
+  name.style.fontSize = "20px";
+  name.style.cssFloat = 'right';
+  pagetop.appendChild(name);
+  pagetop.appendChild(img);
   var req = JSON.parse('{"user":"'+profile.ig+'", "id":"'+profile.Eea+'"}');
   fetch('http://127.0.0.1:8000/user/add', { //Add address of api host
     method: 'POST',
@@ -62,8 +78,20 @@ function signOut()
   auth2.signOut().then(function () {
     console.log('User signed out.');
   });
+  const pagetop = document.getElementById("username");
+  while (pagetop.firstChild) {
+    pagetop.removeChild(pagetop.firstChild);
+  }
   document.getElementById("loginpage").style.display = 'block';
   document.getElementById("chatwindow").style.display = 'none';
+  var req = JSON.parse('{"id":"'+profile.Eea+'"}');
+  fetch('http://127.0.0.1:8000/user/remove', { //Add address of api host
+    method: 'POST',
+    body: JSON.stringify(req),
+    headers:{
+      'Content-Type': 'application/json'
+    }
+  })
 }
 
 function sendMessage()
