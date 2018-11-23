@@ -28,7 +28,9 @@ body{
 .usr-updt{
   overflow-y: auto;
   height: 360px;
-  width: inherit;
+  margin-right: 10px;
+  margin-left: 10px;
+  width: auto;
 }
 .heading{
   text-align: center;
@@ -96,3 +98,4 @@ textarea{
     background-repeat: no-repeat;
     background-image: linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33));
 }
+
