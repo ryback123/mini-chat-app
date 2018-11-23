@@ -3,10 +3,14 @@ var res=0;
 var user_count=0;
 var id=0;
 
+window.onbeforeunload = function(event) {
+  return true;
+}
+
 $(document).ready(function () {
   window.setInterval(function () {
     console.log("ran message");
-    var env = "http://localhost:8000/message";
+    var env = "http://minichatapp.pythonanywhere.com/message";
     $.ajax(env, {
       URL: env,
       type: "GET",
@@ -20,7 +24,7 @@ $(document).ready(function () {
       }
     });
     console.log("ran online");
-    env = "http://localhost:8000/user/add";
+    env = "http://minichatapp.pythonanywhere.com/user/add";
     $.ajax(env, {
       URL: env+"env",
       type: "GET",
@@ -63,7 +67,7 @@ function onSignIn(googleUser)
   pagetop.appendChild(name);
   pagetop.appendChild(img);
   var req = JSON.parse('{"user":"'+profile.ig+'", "id":"'+profile.Eea+'"}');
-  fetch('http://127.0.0.1:8000/user/add', { //Add address of api host
+  fetch('http://minichatapp.pythonanywhere.com/user/add', { //Add address of api host
     method: 'POST',
     body: JSON.stringify(req),
     headers:{
@@ -85,7 +89,7 @@ function signOut()
   document.getElementById("loginpage").style.display = 'block';
   document.getElementById("chatwindow").style.display = 'none';
   var req = JSON.parse('{"id":"'+profile.Eea+'"}');
-  fetch('http://127.0.0.1:8000/user/remove', { //Add address of api host
+  fetch('http://minichatapp.pythonanywhere.com/user/remove', { //Add address of api host
     method: 'POST',
     body: JSON.stringify(req),
     headers:{
@@ -106,7 +110,7 @@ function sendMessage()
     document.getElementById("msg").value = "";
     var req = JSON.parse('{"user":"'+profile.ig+'", "msg":"'+msg+'", "id":"'+profile.Eea+'"}');
     console.log(req);
-    fetch('http://127.0.0.1:8000/message', { //Add address of api host
+    fetch('http://minichatapp.pythonanywhere.com/message', { //Add address of api host
       method: 'POST',
       body: JSON.stringify(req),
       headers:{
@@ -163,16 +167,18 @@ function drawDivsforUser(users)
   }
   console.log(users.user_list);
   for (var i=0; i < users.user_list.length; i++) {
+    const div = document.createElement('div');
     const name = document.createElement('p');
     name.textContent = users.user_list[i].user;
-    name.style.marginLeft = '10px';
-    name.style.marginRight = '10px';
-    name.style.paddingTop = '5px';
+    name.style.paddingTop = '8px';
     name.style.paddingBottom = '5px';
-    name.style.borderBottom = '1px solid #DCDCDC';
+    div.style.borderBottom = '1px solid #DCDCDC';
+    div.style.height = '40px'
+    div.appendChild(name);
     if(users.user_list[i].id!=profile.Eea)
     {
-      userElement.appendChild(name);
+      userElement.appendChild(div);
     }
   }
 }
+
