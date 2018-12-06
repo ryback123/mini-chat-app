@@ -4,6 +4,8 @@ var user_count=0;
 var id=0;
 
 window.onbeforeunload = function(event) {
+  console.log("Done");
+  signOut();
   return true;
 }
 
