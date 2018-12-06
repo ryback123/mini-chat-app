@@ -34,7 +34,7 @@
   <section id="chatwindow" style="display: none;">
     <div style="margin-top: 15px;">
       <div id="username"></div>
-      <button id="signout" type="submit" class="btn btn-danger" onClick="signOut()" name="Send">Sign out</button>
+      <button id="signout" name="signout" type="submit" class="btn btn-danger" onClick="signOut()" name="Send">Sign out</button>
     </div>
     <hr>
     <div class="contain" style="border-bottom: #CED4DA;">
@@ -47,6 +47,15 @@
         <div class="input-group-append">
           <button id="send" type="submit" class="btn btn-primary" onClick="sendMessage()" name="Send">Send</button>
         </div>
+        <script type="text/javascript">
+        var input = document.getElementById("msg");
+        input.addEventListener("keyup", function(event) {
+          event.preventDefault();
+          if (event.keyCode === 13) {
+            document.getElementById("send").click();
+          }
+        });
+        </script>
       </div>
     </div>
     <div class="contain" style="width: 300px;">
