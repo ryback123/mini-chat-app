@@ -143,6 +143,7 @@ function drawDivsforMsg(msgs)
     contents.style.paddingBottom = '5px';
     if(msgs.msg_list[res].id==profile.Eea)
     {
+      name.textContent = "You";
       div.style.marginLeft = '230px';
       div.style.marginRight = '10px';
       div.style.backgroundColor = '#0000FF';
